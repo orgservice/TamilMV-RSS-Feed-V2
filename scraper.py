@@ -14,20 +14,20 @@ from pymongo import MongoClient, errors
 class Scraper:
     def __init__(self):
         # Environment config
-        self.url = os.environ.get('SCRAPER_URL', 'https://www.1tamilmv.se/')
+        self.url = os.environ.get('SCRAPER_URL', 'https://1tamilblasters.wtf/')
         self.port = int(os.environ.get("PORT", 8000))
         self.refresh_interval = int(os.environ.get("REFRESH_INTERVAL", 120))
 
         # MongoDB setup
-        mongo_uri = os.environ.get("MONGODB_URI", "mongodb+srv://bahov19860:RY4Qz3jtp9NXqkUS@cluster0.zztswen.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+        mongo_uri = os.environ.get("MONGODB_URI", "mongodb+srv://imaxprime:imaxprime@entiredatabase.pgyu5ay.mongodb.net/?appName=EntireDatabase")
         self.client = MongoClient(mongo_uri)
         self.db = self.client["rssfeed"]
         self.collection = self.db["feeds"]
         self.collection.create_index("link", unique=True)
 
         # Telegram config
-        self.telegram_token = os.environ.get("6809355138:AAEECbkiAg4OQrgigO61PW-lHOOPXaGS2HA")
-        self.telegram_chat_id = os.environ.get("-1002095851077")
+        self.telegram_token = os.environ.get("8306461400:AAGQmmA9udHLSMFi5oJeYoIInaR7PquO5G8")
+        self.telegram_chat_id = os.environ.get("-1002055582847")
 
         # Flask app
         self.app = Flask(__name__)
@@ -130,7 +130,7 @@ class Scraper:
         channel = ET.SubElement(rss, 'channel')
         ET.SubElement(channel, 'title').text = 'TamilMV RSS Feed'
         ET.SubElement(channel, 'description').text = 'Share and support'
-        ET.SubElement(channel, 'link').text = 'https://t.me/VC_Movie'
+        ET.SubElement(channel, 'link').text = 'https://t.me/telegram'
 
         latest = self.collection.find().sort("pubDate", -1).limit(10)
         for doc in latest:
