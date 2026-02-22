@@ -26,9 +26,9 @@ class Scraper:
         self.collection.create_index("link", unique=True)
 
         # Telegram config
-        self.telegram_token = os.environ.get("8306461400:AAGQmmA9udHLSMFi5oJeYoIInaR7PquO5G8")
-        self.telegram_chat_id = os.environ.get("-1002055582847")
-
+        self.telegram_token = os.environ.get("TELEGRAM_TOKEN", "8306461400:AAGQmmA9udHLSMFi5oJeYoIInaR7PquO5G8")
+        self.telegram_chat_id = os.environ.get("TELEGRAM_CHAT_ID", "-1002055582847")
+        
         # Flask app
         self.app = Flask(__name__)
         self.setup_routes()
@@ -180,4 +180,5 @@ class Scraper:
 if __name__ == "__main__":
     scraper = Scraper()
     scraper.run()
+
 
