@@ -14,7 +14,7 @@ from pymongo import MongoClient, errors
 class Scraper:
     def __init__(self):
         # Environment config
-        self.url = os.environ.get('SCRAPER_URL', 'https://1tamilblasters.wtf/')
+        self.url = os.environ.get('SCRAPER_URL', 'https://www.1tamilmv.earth/')
         self.port = int(os.environ.get("PORT", 8000))
         self.refresh_interval = int(os.environ.get("REFRESH_INTERVAL", 120))
 
@@ -180,3 +180,4 @@ class Scraper:
 if __name__ == "__main__":
     scraper = Scraper()
     scraper.run()
+
